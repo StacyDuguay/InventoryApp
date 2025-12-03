@@ -29,3 +29,12 @@ jobs:
       - name: Cleanup get_all_inventory_items zip
         run: rm function.zip
         working-directory: ./lambda/get_all_inventory_items
+      - name: Zip the add_inventory_item Lambda function
+        run: zip function.zip lambda_function.py
+        working-directory: ./lambda/add_inventory_item 
+      - name: Update Lambda function code
+        run: aws lambda update-function-code --function-name add_inventory_item  --zip-file fileb://function.zip --publish
+        working-directory: ./lambda/add_inventory_item 
+      - name: Cleanup add_inventory_item zip
+        run: rm function.zip
+        working-directory: ./lambda/add_inventory_item 
