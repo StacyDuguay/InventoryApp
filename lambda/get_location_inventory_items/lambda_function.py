@@ -17,7 +17,7 @@ def lambda_handler(event, context):
     try:
         response = dynamo.query(
             TableName=table_name,
-            IndexName="GSI1",
+            IndexName="GSI_LocationInventory",
             KeyConditionExpression="item_location_id = :loc",
             ExpressionAttributeValues={
                 ":loc": {"N": str(location_id)}
