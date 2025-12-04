@@ -13,10 +13,11 @@ def lambda_handler(event, context):
         }
 
     item_id = event['pathParameters']['id']
+    location_id = event['pathParameters']['id']
 
     key = {
         'PK': {'S': f"ITEM#{item_id}"},
-        'SK': {'S': f"ITEM#{item_id}"}
+        'SK': {'S': f"LOCATION#{location_id}"}
     }
 
     try:
